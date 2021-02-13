@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mashups with google.maps.Data</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script src="./index.js"></script>
+  </head>
+  <body>
+
+    <nav id='filters' class='filter-ui'>Filter</nav>
+
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdFrl8tPaVyZjmcTycSRaNjyuxDAlYN2w&v=3.0&sensor=true&language=ee&dummy=index.js"></script> -->
+
+    <div id="map"></div>
+
+    <select id="type" onchange="filterMarkers(this.value);">
+        <option value="">Please select category</option>
+        <option value="fountain">fountain</option>
+        <option value="park">park</option>
+        <option value="washroom">washroom</option>
+    </select>
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=YOUR-API_KEY&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
+  </body>
+</html>
