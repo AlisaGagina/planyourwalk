@@ -9,96 +9,89 @@
   function initMap() {
     var center = new google.maps.LatLng(49.2578263, -123.1939435);
     var mapOptions = {
-      zoom: 16,
+      zoom: 13,
       center: center,
       mapTypeId: google.maps.MapTypeId.TERRAIN,
       mapTypeControl: false,    
     };
 
-    
+    googlify = function (lat, lng){
+        return new google.maps.LatLng(lat, lng)
+    }
 
     
     const features = [
       {
-        position: new google.maps.LatLng(49.25721, -123.1963),
+        lat:49.25721, lng :-123.1963,
         type: "fountain", category:{in_operation:"na", pet_friendly:'na'},
       },
       {
-        position: new google.maps.LatLng(49.25539, -123.1982),
+        lat:49.25711, lng :-123.263,
         type: "fountain", category:{in_operation:"na", pet_friendly:'na'},
       },
       {
-        position: new google.maps.LatLng(49.25747, -123.19252),
+        lat:49.45721, lng :-123.3963,
         type: "fountain", category:{in_operation:"na", pet_friendly:'na'},
       },
       {
-        position: new google.maps.LatLng(49.2525, -123.19907),
+        lat:48.45721, lng :-124.3963,
         type: "fountain", category:{in_operation:"na", pet_friendly:'na'},
       },
       {
-        position: new google.maps.LatLng(49.25725, -123.23011),
+        lat:48.45721, lng :-124.3963,
         type: "fountain", category:{in_operation:"na", pet_friendly:'yes'},
       },
       {
-        position: new google.maps.LatLng(49.25872, -123.23089),
+        lat:49.1358, lng :-123.9963,
         type: "fountain", category:{in_operation:"na", pet_friendly:'yes'},
       },
       {
-        position: new google.maps.LatLng(49.25784, -123.23094),
+        lat:48.3268, lng :-123.0963,
         type: "fountain", category:{in_operation:"yearround", pet_friendly:'yes'}
       },
       {
-        position: new google.maps.LatLng(49.25682, -123.23149),
+        lat:49.135, lng :-123.93,
         type: "fountain", category:{in_operation:"yearround", pet_friendly:'no'}
       },
       {
-        position: new google.maps.LatLng(49.2579, -123.23463),
+        lat:49.36, lng :-123.93,
         type: "fountain", category:{in_operation:"yearround", pet_friendly:'yes'}
       },
       {
-        position: new google.maps.LatLng(49.25666, -123.23468),
+        lat:49.3467, lng :-123.93,
         type: "fountain", category:{in_operation:"may-october", pet_friendly:'no'}
       },
       {
-        position: new google.maps.LatLng(49.256988, -123.23364),
+        lat:49.124, lng :-123.93,
         type: "fountain", category:{in_operation:"may-october", pet_friendly:'yes'}
       },
       {
-        position: new google.maps.LatLng( 49.25662347903106, -123.19879464019775),
+        lat:49.3416, lng :-122.93,
         type: "washroom",  category:{hours:"na"},
       },
       {
-        position: new google.maps.LatLng(
-          49.256365282092855,
-          -123.19937399734496
-        ),
+        lat:49.5641, lng :-123.96,
         type: "washroom", category:{hours:"na"},
       },
       {
-        position: new google.maps.LatLng(49.25665018901448, -123.1982474695587),
+        lat:49.32131, lng :-123.99,
         type: "washroom", category:{hours:"na"},
       },
       {
-        position: new google.maps.LatLng(
-          49.259543720969806,
-          -123.23112279762267
-        ),
+        lat:49.34251, lng :-123.98,
         type: "washroom", category:{hours:"na"},
       },
       {
-        position: new google.maps.LatLng(
-          49.25608037421864,
-          -123.23288232673644
-        ),
+        lat:49.3821, lng :-123.97,
         type: "washroom", category:{hours:"na"},
       },
       {
-        position: new google.maps.LatLng(49.25851096325805, -123.2344058214569),
+        lat:49.3731, lng :-123.93,
         type: "washroom", category:{hours:"na"},
       },
       {
-        position: new google.maps.LatLng(49.25818154739766, -123.2346203981781),
-        type: "washroom", category:{hours:"na"},
+        lat:49.3722, lng :-123.92,
+        type: "washroom", category:{hours:"24hrs"},
       },
       {
         coords: [
@@ -167,7 +160,7 @@
     for (let i = 0; i < features.length; i++) {
      if(features[i].type !='dogpark'){
          const marker = new google.maps.Marker({
-        position: features[i].position,
+        position: googlify(features[i].lat,features[i].lng),
         map: map,
         visible: true,
         category: features[i].category,
@@ -179,10 +172,10 @@
         const marker = new google.maps.Polygon({
          paths: features[i].coords,
          type: features[i].type,
-        strokeColor: "#FF0000",
+        strokeColor: "#F86464",
         strokeOpacity: 0.8,
         strokeWeight: 2,
-        fillColor: "#FF0000",
+        fillColor: "#F86464",
         fillOpacity: 0.35,
         })
         marker.setMap(map);
