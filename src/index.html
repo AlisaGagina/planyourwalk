@@ -8,22 +8,19 @@
   </head>
   <body>
 
-    <nav id='filters' class='filter-ui'>Filter</nav>
-
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdFrl8tPaVyZjmcTycSRaNjyuxDAlYN2w&v=3.0&sensor=true&language=ee&dummy=index.js"></script> -->
-
     <div id="map"></div>
 
-    <select id="type" onchange="filterMarkers(this.value);">
-        <option value="">Please select category</option>
-        <option value="fountain">fountain</option>
-        <option value="park">park</option>
-        <option value="washroom">washroom</option>
-    </select>
+    <fieldset class='checkbox'>  
+        <input type="checkbox" checked value="fountain" onchange="return filterMarkers(this.value, this.checked);">Fountains<br>  
+        <input type="checkbox" checked value="washroom" onchange="return filterMarkers(this.value, this.checked);">Washrooms<br>  
+        <input type="checkbox" checked value="dogpark" onchange="return filterMarkers(this.value, this.checked);">Dog Parks<br>    
+    </fieldset>  
+
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=YOUR-API_KEY&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdFrl8tPaVyZjmcTycSRaNjyuxDAlYN2w&callback=initMap&libraries=&v=weekly"
       async
     ></script>
+
   </body>
 </html>
