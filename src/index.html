@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="./style.css" />
     <script src="./index.js"></script>
     <link rel="icon" href="https://www.shareicon.net/data/256x256/2015/10/30/664117_foot_512x512.png">
+    <!-- <link rel="icon" href="http://planyourwalk.online.s3-website.us-east-1.amazonaws.com/shoes.png">  -->
   </head>
   <body>
 
@@ -15,7 +16,7 @@
     <div id = "absolute">
     <h2 style=" background:rgba(248, 244, 247, 0.9);">Plan Your Walk!</h2>
     <fieldset class='checkbox'>  
-        <input type="checkbox" checked value="fountain" onchange="return filterMarkers(this.value, this.checked);">Fountains<br>  
+        <input type="checkbox" checked value="fountain" onchange="return filterMarkers(this.value, this.checked);">Water Fountains<br>  
         <input type="checkbox" checked value="washroom" onchange="return filterMarkers(this.value, this.checked);">Washrooms<br>  
         <input type="checkbox" checked value="dogpark" onchange="return filterMarkers(this.value, this.checked);">Dog Parks<br>    
     </fieldset>
@@ -43,14 +44,14 @@
         
         <div class="dropdown-content">
         <p>   Operation:</p> 
-          <input type="checkbox" checked value="spring-to-fall" onchange="return filterFountainMarkers(this.value, this.checked);">Sprint to Fall<br>  
-        <input type="checkbox" checked value="may-october" onchange="return filterFountainMarkers(this.value, this.checked);">May - October<br>  
-        <input type="checkbox" checked value="yearround" onchange="return filterFountainMarkers(this.value, this.checked);">Year Round<br> 
-        <input type="checkbox" checked value="na" onchange="return filterFountainMarkers(this.value, this.checked);">Unknown<br>      
+          <input type="checkbox" checked  value="spring to fall" onchange="return filterFountainMarkers(this.value, this.checked);">Sprint to Fall<br>  
+        <input type="checkbox" checked  value="May-October" onchange="return filterFountainMarkers(this.value, this.checked);">May - October<br>  
+        <input type="checkbox" checked  value="Year Round" onchange="return filterFountainMarkers(this.value, this.checked);">Year Round<br> 
+        <input type="checkbox" checked  value="na" onchange="return filterFountainMarkers(this.value, this.checked);">Unknown<br>      
         <p>Pet friendly:</p> 
-        <input type="checkbox" checked value="yes" onchange="return filterFountainMarkers(this.value, this.checked);">Yes<br>  
-        <input type="checkbox" checked value="no" onchange="return filterFountainMarkers(this.value, this.checked);">No<br>  
-        <input type="checkbox" checked value="unknown" onchange="return filterFountainMarkers(this.value, this.checked);">Unknown<br> 
+        <input type="checkbox" checked   value="Y" onchange="return filterFountainMarkers(this.value, this.checked);">Yes<br>  
+        <input type="checkbox" checked  value="N" onchange="return filterFountainMarkers(this.value, this.checked);">No<br>  
+        <input type="checkbox" checked  value="unknown" onchange="return filterFountainMarkers(this.value, this.checked);">Unknown<br> 
           </div>
        
     </fieldset>  
@@ -58,10 +59,10 @@
         <p style='font-weight: 300; font-size: larger; margin-bottom: 2px;'>Washroom Filters ▼</p> 
         <div class="dropdown-content">
         <p>   Operation:</p> 
-        <input type="checkbox" checked value="dawntodusk" onchange="return filterWashroomMarkers(this.value, this.checked);">Dawn to Dusk<br>  
-        <input type="checkbox" checked value="24hrs" onchange="return filterWashroomMarkers(this.value, this.checked);">24 hrs<br>  
-        <input type="checkbox" checked value="closed" onchange="return filterWashroomMarkers(this.value, this.checked);">Closed for Winter<br> 
-        <input type="checkbox" checked value="na" onchange="return filterWashroomMarkers(this.value, this.checked);">Unknown<br> 
+        <input type="checkbox" checked  value="Dawn to Dusk" onchange="return filterWashroomMarkers(this.value, this.checked);">Dawn to Dusk<br>  
+        <input type="checkbox" checked  value="24 hrs" onchange="return filterWashroomMarkers(this.value, this.checked);">24 hrs<br>  
+        <input type="checkbox" checked  value="closed" onchange="return filterWashroomMarkers(this.value, this.checked);">Closed for Winter<br> 
+        <input type="checkbox" checked   value="na" onchange="return filterWashroomMarkers(this.value, this.checked);">Unknown<br> 
         </div>     
     </fieldset>  
     </div>
