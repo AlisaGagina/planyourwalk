@@ -101,10 +101,11 @@
         type: "washroom", category:{hours:"na"},
       },
       {
-        position: new google.maps.LatLng(
-          49.25727341958453,
-          -123.23348314155578
-        ),
+        coords: [
+            { lat: 49.25608, lng: -123.23 },
+            { lat: 49.24607, lng:-123.24 },
+            { lat: 49.25606, lng: -123.13 },
+          ],
         type: "dogpark", category:{},
       },
     ];
@@ -164,7 +165,8 @@
 
 
     for (let i = 0; i < features.length; i++) {
-      const marker = new google.maps.Marker({
+     if(features[i].type !='dogpark'){
+         const marker = new google.maps.Marker({
         position: features[i].position,
         map: map,
         visible: true,
@@ -173,6 +175,21 @@
         icon: getColour(features[i].type),
       });
       markers[i] = marker;
+     }else{
+        const marker = new google.maps.Polygon({
+         paths: features[i].coords,
+         type: features[i].type,
+        strokeColor: "#FF0000",
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: "#FF0000",
+        fillOpacity: 0.35,
+        })
+        marker.setMap(map);
+        markers[i] = marker;
+     }
+     
+      
     }
 
 
@@ -201,10 +218,18 @@
         marker = markers[i];
         // If is same category or category not picked
         if (marker.type == category) {
-          if (checked) {
-            marker.setVisible(true);
+          if (category != "dogpark") {
+            if (checked) {
+              marker.setVisible(true);
+            } else {
+              marker.setVisible(false);
+            }
           } else {
-            marker.setVisible(false);
+            if (checked) {
+              marker.setMap(map);
+            } else {
+              marker.setMap(null);
+            }
           }
         }
       }
@@ -244,6 +269,7 @@
             }
           }
   }
+  
 }
   
 
