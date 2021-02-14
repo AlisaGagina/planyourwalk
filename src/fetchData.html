@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+
+            function getWaterData(){
+                const url = "https://opendata.vancouver.ca/api/records/1.0/search/?dataset=drinking-fountains&q=&rows=1000&facet=in_operation&facet=pet_friendly&facet=geo_local_area";
+
+                // switch (operation_time){
+                //     case "spring to fall":
+                //         var url = base_url + "&refine.in_operation=spring+to+fall";
+                //         break;
+                //     case "May-October":
+                //         var url = base_url + "&refine.in_operation=May-October";
+                //         break;
+                //     case "Year Round":
+                //         var url = base_url + "&refine.in_operation=Year+Round";
+                //         break;
+                //     // case "year-round":
+                //     //     var url = base_url + "&refine.in_operation=year-round";
+                //     //     break;
+                //     default:
+                //         var url = base_url;
+                // }
+                
+                // switch (is_pet_friendly){
+                //     case "Y":
+                //         url = url + "&refine.pet_friendly=Y"
+                //         break;
+                //     case "N":
+                //         url = url + "&refine.pet_friendly=N"
+                //         break;
+                //     default:
+                //         var url = url;
+                // }
+                const request = new XMLHttpRequest();
+                request.open("GET", url, false);
+                request.send(null);
+
+
+                var data = request.responseText;
+                var obj = JSON.parse(data);
+
+                var waterfountains = []
+                
+                for(i=0;i<obj.records.length;i++){
+                    var record = obj.records[i];
+					var long = record.fields.geom.coordinates[0];
+                    var lat = record.fields.geom.coordinates[1];
+                    var type = "fountain";
+                    var pet_friendly = "na";
+                    var in_operation = "na";
+                    if ("pet_friendly" in record.fields){
+                        pet_friendly = record.fields.pet_friendly;
+                    }
+                    if ("in_operation" in record.fields){
+                        in_operation = record.fields.in_operation;
+                    }
+                    var waterfountain = {"lat": lat, "lng": long, "type": "fountain", "category":{"in_operation":in_operation, "pet_friendly": pet_friendly}}
+					waterfountains.push(waterfountain);
+                    console.log(waterfountain);
+				}
+                return waterfountains;
+            }
+            //getWaterData();
+
+            function getWashroomData(){
+                const url = "https://opendata.vancouver.ca/api/records/1.0/search/?dataset=public-washrooms&q=&rows=1000&facet=type&facet=summer_hours&facet=winter_hours&facet=wheel_access&facet=maintainer&facet=geo_local_area";
+
+                console.log(url);
+                const request = new XMLHttpRequest();
+                request.open("GET", url, false);
+                request.send(null);
+
+
+                var data = request.responseText;
+                var obj = JSON.parse(data);
+
+                var washrooms = []
+                
+                for(i=0;i<obj.records.length;i++){
+                    var record = obj.records[i];
+					var long = record.fields.geom.coordinates[0];
+                    var lat = record.fields.geom.coordinates[1];
+                    var type = "washroom";
+                    var hours;
+                    switch (record.fields.winter_hours){
+                        case "Dawn to Dusk":
+                            hours = "Dawn to Dusk";
+                            break;
+                        case "24 hrs":
+                            hours = "24 hrs";
+                            break;
+                        case "Closed":
+                            hours = "closed";
+                            break;
+                        default:
+                            hours ="na";
+                    }
+                    var washroom = {"lat": lat, "lng": long, "type": "washroom", "category":{"hours":hours}};
+					washrooms.push(washroom);
+                    console.log(washroom);
+				}
+                console.log(washrooms.length);
+                return washrooms;
+            }
+
+            function getDogparkData(){
+                const url = "https://opendata.vancouver.ca/api/records/1.0/search/?dataset=dog-off-leash-parks&q=&rows=1000&facet=geo_local_area";
+
+                console.log(url);
+                const request = new XMLHttpRequest();
+                request.open("GET", url, false);
+                request.send(null);
+
+
+                var data = request.responseText;
+                var obj = JSON.parse(data);
+
+                var dogparks = []
+                
+                for(i=0;i<obj.records.length;i++){
+                    var record = obj.records[i];
+                    if (record.fields.geom.coordinates.length == 2){
+                        var coords = record.fields.geom.coordinates[1];
+                    }
+                    else{
+                        var coords = record.fields.geom.coordinates[0]
+                    }
+
+                    points = []
+
+                    for (j=0; j<coords.length; j++){
+                        points.push({"lat": coords[j][1], "long": coords[j][0]});
+                    }
+
+                    var type = "dogpark";
+                    var dogpark = {"coords":points, "type": "dogpark", "category":{}};
+					dogparks.push(dogpark);
+                    console.log(dogpark);
+				}
+                console.log("dogpark length" + dogparks.length);
+                return dogparks;
+            }          
+
+            getDogparkData();
+
+        </script>
+
+    </body>
+</html>
+
