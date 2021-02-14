@@ -21,94 +21,91 @@
     const features = [
       {
         position: new google.maps.LatLng(49.25721, -123.1963),
-        type: "fountain",
+        type: "fountain", category:{in_operation:"na", pet_friendly:'na'},
       },
       {
         position: new google.maps.LatLng(49.25539, -123.1982),
-        type: "fountain",
+        type: "fountain", category:{in_operation:"na", pet_friendly:'na'},
       },
       {
         position: new google.maps.LatLng(49.25747, -123.19252),
-        type: "fountain",
+        type: "fountain", category:{in_operation:"na", pet_friendly:'na'},
       },
       {
         position: new google.maps.LatLng(49.2525, -123.19907),
-        type: "fountain",
+        type: "fountain", category:{in_operation:"na", pet_friendly:'na'},
       },
       {
         position: new google.maps.LatLng(49.25725, -123.23011),
-        type: "fountain",
+        type: "fountain", category:{in_operation:"na", pet_friendly:'yes'},
       },
       {
         position: new google.maps.LatLng(49.25872, -123.23089),
-        type: "fountain",
+        type: "fountain", category:{in_operation:"na", pet_friendly:'yes'},
       },
       {
         position: new google.maps.LatLng(49.25784, -123.23094),
-        type: "fountain",
+        type: "fountain", category:{in_operation:"yearround", pet_friendly:'yes'}
       },
       {
         position: new google.maps.LatLng(49.25682, -123.23149),
-        type: "fountain",
+        type: "fountain", category:{in_operation:"yearround", pet_friendly:'no'}
       },
       {
         position: new google.maps.LatLng(49.2579, -123.23463),
-        type: "fountain",
+        type: "fountain", category:{in_operation:"yearround", pet_friendly:'yes'}
       },
       {
         position: new google.maps.LatLng(49.25666, -123.23468),
-        type: "fountain",
+        type: "fountain", category:{in_operation:"may-october", pet_friendly:'no'}
       },
       {
         position: new google.maps.LatLng(49.256988, -123.23364),
-        type: "fountain",
+        type: "fountain", category:{in_operation:"may-october", pet_friendly:'yes'}
       },
       {
-        position: new google.maps.LatLng(
-          49.25662347903106,
-          -123.19879464019775
-        ),
-        type: "washroom",
+        position: new google.maps.LatLng( 49.25662347903106, -123.19879464019775),
+        type: "washroom",  category:{hours:"na"},
       },
       {
         position: new google.maps.LatLng(
           49.256365282092855,
           -123.19937399734496
         ),
-        type: "washroom",
+        type: "washroom", category:{hours:"na"},
       },
       {
         position: new google.maps.LatLng(49.25665018901448, -123.1982474695587),
-        type: "washroom",
+        type: "washroom", category:{hours:"na"},
       },
       {
         position: new google.maps.LatLng(
           49.259543720969806,
           -123.23112279762267
         ),
-        type: "washroom",
+        type: "washroom", category:{hours:"na"},
       },
       {
         position: new google.maps.LatLng(
           49.25608037421864,
           -123.23288232673644
         ),
-        type: "washroom",
+        type: "washroom", category:{hours:"na"},
       },
       {
         position: new google.maps.LatLng(49.25851096325805, -123.2344058214569),
-        type: "washroom",
+        type: "washroom", category:{hours:"na"},
       },
       {
         position: new google.maps.LatLng(49.25818154739766, -123.2346203981781),
-        type: "washroom",
+        type: "washroom", category:{hours:"na"},
       },
       {
         position: new google.maps.LatLng(
           49.25727341958453,
           -123.23348314155578
         ),
-        type: "dogpark",
+        type: "dogpark", category:{},
       },
     ];
 
@@ -116,7 +113,7 @@
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
     // Create markers.
     const styleControl = document.getElementById("style-selector-control");
-        map.controls[google.maps.ControlPosition.TOP_LEFT].push(styleControl);
+        map.controls.push(styleControl);
         // Apply new JSON when the user chooses to hide/show features.
         document.getElementById("hide-poi").addEventListener("click", () => {
             map.setOptions({ styles: styles["hide"] });
@@ -128,9 +125,13 @@
         default: [],
         hide: [
             {
-            featureType: "poi.business",
+            featureType: "poi",
             stylers: [{ visibility: "off" }],
             },
+            {
+                featureType: "poi.park",
+                stylers: [{ visibility: "on" }],
+                },
             {
             featureType: "transit",
             elementType: "labels.icon",
@@ -167,6 +168,7 @@
         position: features[i].position,
         map: map,
         visible: true,
+        category: features[i].category,
         type: features[i].type,
         icon: getColour(features[i].type),
       });
@@ -210,9 +212,39 @@
     };
 
     filterFountainMarkers= function (category, checked){
-
+        for (i = 0; i < markers.length; i++) {
+            marker = markers[i];
+            // If is same category or category not picked
+            if (marker.category.in_operation == category && marker.type == "fountain") {
+              if (checked) {
+                marker.setVisible(true);
+              } else if (marker.type == "fountain" && marker.category.in_operation == category ){
+                marker.setVisible(false);
+              }
+            }
+            if (marker.category.pet_friendly == category && marker.type == "fountain") {
+                if (checked) {
+                  marker.setVisible(true);
+                } else if (marker.category.pet_friendly == category && marker.type == "fountain"){
+                  marker.setVisible(false);
+                }
+              }
+          }
     }
+    filterWashroomMarkers= function (category, checked){
+        for (i = 0; i < markers.length; i++) {
+            marker = markers[i];
+            // If is same category or category not picked
+            if (marker.category.hours == category && marker.type == "washroom") {
+              if (checked) {
+                marker.setVisible(true);
+              } else if (marker.type == "washroom"){
+                marker.setVisible(false);
+              }
+            }
+          }
   }
+}
   
 
 

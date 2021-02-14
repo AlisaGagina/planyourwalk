@@ -9,24 +9,7 @@
   </head>
   <body>
 
-    <div id="style-selector-control" class="map-control">
-        <p>Landmarks</p> 
-        <input
-          type="radio"
-          name="show-hide"
-          id="hide-poi"
-          class="selector-control"
-        />
-        <label for="hide-poi">Hide</label>
-        <input
-          type="radio"
-          name="show-hide"
-          id="show-poi"
-          class="selector-control"
-          checked="checked"
-        />
-        <label for="show-poi">Show</label>
-      </div>
+  
 
     <div id="map"></div>
     <div id = "absolute">
@@ -34,21 +17,51 @@
         <input type="checkbox" checked value="fountain" onchange="return filterMarkers(this.value, this.checked);">Fountains<br>  
         <input type="checkbox" checked value="washroom" onchange="return filterMarkers(this.value, this.checked);">Washrooms<br>  
         <input type="checkbox" checked value="dogpark" onchange="return filterMarkers(this.value, this.checked);">Dog Parks<br>    
-    </fieldset>  
+    </fieldset>
+
+    <fieldset id="style-selector-control" class="filter_selections">
+        <p style="font-weight: bold;">Points of Interest</p> 
+        <div style="text-align: center;">
+        <input
+          type="radio"
+          name="show-hide"
+          id="hide-poi"
+        />
+        <label for="hide-poi">Hide</label>
+        <input
+          type="radio"
+          name="show-hide"
+          id="show-poi"
+          checked="checked"
+        />
+        <label for="show-poi">Show</label></div>
+    </fieldset>
 
     <fieldset id='fountain_operation' class='filter_selections'> 
-        <p>Fountain operation:</p> 
-        <input type="checkbox" checked value="spring-to-fall" onchange="return filterFountainMarkers(this.value, this.checked);">Sprint to Fall<br>  
+     <p style='font-weight: 300; font-size: larger; margin-bottom: 2px;'>Fountain Filters ▼</p> 
+        
+        <div class="dropdown-content">
+        <p>   Operation:</p> 
+          <input type="checkbox" checked value="spring-to-fall" onchange="return filterFountainMarkers(this.value, this.checked);">Sprint to Fall<br>  
         <input type="checkbox" checked value="may-october" onchange="return filterFountainMarkers(this.value, this.checked);">May - October<br>  
         <input type="checkbox" checked value="yearround" onchange="return filterFountainMarkers(this.value, this.checked);">Year Round<br> 
         <input type="checkbox" checked value="na" onchange="return filterFountainMarkers(this.value, this.checked);">Unknown<br>      
+        <p>Pet friendly:</p> 
+        <input type="checkbox" checked value="yes" onchange="return filterFountainMarkers(this.value, this.checked);">Yes<br>  
+        <input type="checkbox" checked value="no" onchange="return filterFountainMarkers(this.value, this.checked);">No<br>  
+        <input type="checkbox" checked value="unknown" onchange="return filterFountainMarkers(this.value, this.checked);">Unknown<br> 
+          </div>
+       
     </fieldset>  
     <fieldset id='washroom_operation' class='filter_selections'> 
-        <p>Washroom operation:</p> 
+        <p style='font-weight: 300; font-size: larger; margin-bottom: 2px;'>Washroom Filters ▼</p> 
+        <div class="dropdown-content">
+        <p>   Operation:</p> 
         <input type="checkbox" checked value="dawntodusk" onchange="return filterWashroomMarkers(this.value, this.checked);">Dawn to Dusk<br>  
         <input type="checkbox" checked value="24hrs" onchange="return filterWashroomMarkers(this.value, this.checked);">24 hrs<br>  
         <input type="checkbox" checked value="closed" onchange="return filterWashroomMarkers(this.value, this.checked);">Closed for Winter<br> 
-        <input type="checkbox" checked value="na" onchange="return filterWashroomMarkers(this.value, this.checked);">Unknown<br>      
+        <input type="checkbox" checked value="na" onchange="return filterWashroomMarkers(this.value, this.checked);">Unknown<br> 
+        </div>     
     </fieldset>  
     </div>
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
