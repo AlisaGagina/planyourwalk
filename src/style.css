@@ -2,18 +2,63 @@ html,
 body,
 #map {
   height: 100%;
+  /*   width: 95%; */
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
-.checkbox {
-    background:#fff;
+#absolute{
     position:absolute;
-    font-family: "Roboto", "Arial", sans-serif;
     top:10px;
     right:10px;
     z-index:100;
-    padding:10px 20px;
+}
 
+.checkbox {
+    background:#fff;
+    font-family: "Roboto", "Arial", sans-serif;
+    top:10px;
+    right:10px;
+    padding:10px 20px;
+    box-shadow: 5px 5px 2px #aaaaaa;
+    border:none;
+    font-weight: bold;
+    text-align: center;
     }
+
+.filter_selections{
+    background:#fff;
+    position: relative;
+    font-family: "Roboto", "Arial", sans-serif;
+    top: 10px;
+    margin-bottom: 10px;
+    border:none;
+    padding:10px 20px;
+    box-shadow: 5px 5px 2px #aaaaaa;
+    z-index:100;
+    overflow:hidden;
+}
+.map-control {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+    font-family: "Roboto", "sans-serif";
+    text-align: center;
+    margin: 10px;
+    padding-right: 5px;
+    /* Hide the control initially, to prevent it from appearing
+             before the map loads. */
+    display: none;
+  }
+  
+  /* Display the control once it is inside the map. */
+  #map .map-control {
+    display: block;
+  }
+  
+  .selector-control {
+    font-size: 14px;
+    line-height: 30px;
+    vertical-align: baseline;
+  }
