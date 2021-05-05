@@ -177,8 +177,8 @@
         };
       } else if (category == "washroom") {
         return {
-        //   url: "https://cdn1.iconfinder.com/data/icons/tools-and-construction-2-6/65/64-512.png",
-        url:"http://planyourwalk.online.s3-website-us-east-1.amazonaws.com/toilet_pin.png",
+        url: "https://cdn1.iconfinder.com/data/icons/tools-and-construction-2-6/65/64-512.png",
+        //url:"http://planyourwalk.online.s3-website-us-east-1.amazonaws.com/toilet_pin.png",
           scaledSize: new google.maps.Size(40, 40), // scaled size
         };
       } else if (category == "dogpark") {
