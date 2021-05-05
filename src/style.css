@@ -44,7 +44,7 @@ body,
     background:rgba(248, 244, 247);
 }
 
-  p, h2{
+  p, h2, h3{
     text-align: center;
     margin: 0.1px;
   }
