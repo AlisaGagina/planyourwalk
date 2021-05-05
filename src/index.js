@@ -173,14 +173,14 @@
         return {
           url:
             // "https://www.freepnglogos.com/uploads/water-drop-png/water-drop-falling-illustration-transparent-png-svg-vector-29.png",
-         "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+         "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
             //scaledSize: new google.maps.Size(25, 25), // scaled size
         };
       } else if (category == "washroom") {
         return {
         //   url: "https://cdn1.iconfinder.com/data/icons/tools-and-construction-2-6/65/64-512.png",
         // url:"http://planyourwalk.online.s3-website-us-east-1.amazonaws.com/toilet_pin.png",
-        url:"http://maps.google.com/mapfiles/ms/icons/pink-dot.png",
+        url:"https://maps.google.com/mapfiles/ms/icons/pink-dot.png",
 
          // scaledSize: new google.maps.Size(25, 25), // scaled size
         };
